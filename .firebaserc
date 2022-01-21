@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "my-online-bewerbung",
+    "my-online-bewerbung": "my-online-bewerbung"
+  },
+  "targets": {}
+}

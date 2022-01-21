@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "public": "dist/demo",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "predeploy": [
+      "ng build --prod"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "database": {
+    "rules": "m.json"
+  }
+}
