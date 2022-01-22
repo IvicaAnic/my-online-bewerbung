@@ -12,7 +12,7 @@ export class AppComponent {
    
     {
       name: 'pdf', docs: [
-        `${getbaseUrl()}/assets/Ivica_Anic_Lebenslauf_.pdf`
+        `${getbaseUrl()}/assets/IvicaAnicLebensLauf.pdf`
       ], custom: false, acceptedUploadTypes: 'application/pdf'
     },
     
