@@ -8,7 +8,7 @@ import { EventEmitter } from '@angular/core';
 declare var mammoth;
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type viewerType = 'google' | 'office' | 'mammoth' | 'pdf' | 'url';
+export type viewerType = 'Ausbildungszeugnisse1' | 'office' | 'Ausbildungszeugnisse' | 'Lebenslauf' | 'Bewerbung';
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'ngx-doc-viewer',
@@ -65,7 +65,7 @@ export class NgxDocViewerComponent implements OnChanges, OnDestroy {
     public fullUrl: SafeResourceUrl = null;
     public externalViewer = false;
     public docHtml = '';
-    public configuredViewer: viewerType = 'google';
+    public configuredViewer: viewerType = 'Ausbildungszeugnisse1';
     private checkIFrameSubscription: Subscription = null;
 
     constructor(private domSanitizer: DomSanitizer, private ngZone: NgZone) { }
@@ -78,18 +78,14 @@ export class NgxDocViewerComponent implements OnChanges, OnDestroy {
 
     async ngOnChanges(changes: SimpleChanges): Promise<void> {
         if (changes && changes.viewer && (changes.viewer.isFirstChange || changes.viewer.currentValue !== changes.viewer.previousValue)) {
-            if (this.viewer !== 'google' && this.viewer !== 'office' &&
-                this.viewer !== 'mammoth' && this.viewer !== 'pdf' && this.viewer !== 'url') {
+            if (this.viewer !== 'Ausbildungszeugnisse1' && this.viewer !== 'office' &&
+                this.viewer !== 'Ausbildungszeugnisse' && this.viewer !== 'Lebenslauf' && this.viewer !== 'Bewerbung') {
                 console.error(`Unsupported viewer: '${this.viewer}'. Supported viewers: google, office, mammoth and pdf`);
             }
-            if (this.viewer === 'mammoth') {
-                if (mammoth === null) {
-                    console.error('please install mammoth when using local viewer');
-                }
-            }
+            
             this.configuredViewer = this.viewer;
         }
-        if (this.disableContent !== 'none' && this.viewer !== 'google') {
+        if (this.disableContent !== 'none' && this.viewer !== 'Ausbildungszeugnisse1') {
 
         }
         if ((changes.url && changes.url.currentValue !== changes.url.previousValue) ||
@@ -99,31 +95,31 @@ export class NgxDocViewerComponent implements OnChanges, OnDestroy {
                 this.viewerUrl = null;
             }
             switch (this.configuredViewer) {
-                case 'google':
-                    this.viewerUrl = `https://docs.google.com/gview?url=%URL%&embedded=true`;
+                case 'Ausbildungszeugnisse':
+                    this.viewerUrl = null;
                     break;
                 case 'office': {
-                    this.viewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=%URL%`;
+                    this.viewerUrl = null;
                     break;
                 }
-                case 'pdf': {
+                case 'Lebenslauf': {
                     this.viewerUrl = null;
                     break;
                 }
             }
             this.docHtml = '';
-            this.externalViewer = this.configuredViewer === 'google' || this.configuredViewer === 'office' ||
-                this.configuredViewer === 'url';
+            this.externalViewer = this.configuredViewer === 'Ausbildungszeugnisse1' || this.configuredViewer === 'office' ||
+                this.configuredViewer === 'Bewerbung';
             if (this.checkIFrameSubscription) {
                 this.checkIFrameSubscription.unsubscribe();
             }
             if (!this.url) {
                 this.fullUrl = null;
-            } else if (this.configuredViewer === 'office' || this.configuredViewer === 'google'
-                || this.configuredViewer === 'pdf' || this.configuredViewer === 'url') {
+            } else if (this.configuredViewer === 'office' || this.configuredViewer === 'Ausbildungszeugnisse1'
+                || this.configuredViewer === 'Lebenslauf' || this.configuredViewer === 'Bewerbung') {
                 const u = this.url.indexOf('/') ? encodeURIComponent(this.url) : this.url;
                 let url = this.viewerUrl ? this.viewerUrl.replace('%URL%', u) : this.url;
-                if (!!this.queryParams && this.configuredViewer !== 'pdf' && this.configuredViewer !== 'url') {
+                if (!!this.queryParams && this.configuredViewer !== 'Lebenslauf' && this.configuredViewer !== 'Bewerbung') {
                     const start = this.queryParams.startsWith('&') ? '' : '&';
                     url = `${url}${start}${this.queryParams}`;
                 }
@@ -132,7 +128,7 @@ export class NgxDocViewerComponent implements OnChanges, OnDestroy {
                 // https://stackoverflow.com/questions/40414039/google-docs-viewer-returning-204-responses-no-longer-working-alternatives
                 // hack to reload iframe if it's not loaded.
                 // would maybe be better to use view.officeapps.live.com but seems not to work with sas token.
-                if (this.configuredViewer === 'google' && this.googleCheckContentLoaded) {
+                if (this.configuredViewer === 'Ausbildungszeugnisse1' && this.googleCheckContentLoaded) {
                     this.ngZone.runOutsideAngular(() => {
                         // if it's not loaded after the googleIntervalCheck, then open load again.
                         this.checkIFrameSubscription = timer(100, this.googleCheckInterval)
@@ -144,12 +140,7 @@ export class NgxDocViewerComponent implements OnChanges, OnDestroy {
                             });
                     });
                 }
-            } else if (this.configuredViewer === 'mammoth') {
-                if (!mammoth) {
-                    console.error('Please install mammoth and make sure mammoth.browser.min.js is loaded.');
-                }
-                this.docHtml = await this.getDocxToHtml(this.url);
-            }
+            } 
         }
     }
 

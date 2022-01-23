@@ -10,11 +10,18 @@ import { getbaseUrl } from 'demo/utils';
 export class AppComponent {
   viewers: { name: viewerType; docs: string[]; custom: boolean; acceptedUploadTypes: string; viewerUrl?: string }[] = [
    
+   
     {
-      name: 'pdf', docs: [
+      name: 'Bewerbung', docs: [
+        `${getbaseUrl()}/assets/mybewerbung.pdf`
+      ], custom: false, acceptedUploadTypes: 'application/pdf'
+    },
+    {
+      name: 'Lebenslauf', docs: [
         `${getbaseUrl()}/assets/IvicaAnicLebensLauf.pdf`
       ], custom: false, acceptedUploadTypes: 'application/pdf'
     },
+   
     
   ];
   selectedViewer = this.viewers[0];

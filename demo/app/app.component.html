@@ -1,4 +1,19 @@
 <div style="text-align:center">
+    <div class="d-flex">
+        <button
+            *ngFor="let viewer of viewers" 
+            [class.active]="selectedViewer.name === viewer.name"
+            class="btn btn-outline-primary m-2"
+            (click)="selectViewer(viewer.name)"
+           
+        >
+        
+        {{viewer.name}}
+      
+      
+    </button>
+    </div>
+<div style="text-align:center">
    
     
     <ngx-doc-viewer
