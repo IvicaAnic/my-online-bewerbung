@@ -18,10 +18,20 @@ export class AppComponent {
     },
     {
       name: 'Lebenslauf', docs: [
-        `${getbaseUrl()}/assets/IvicaAnicLebensLauf.pdf`
+        `${getbaseUrl()}/assets/AnicIvica_LebensLauf.pdf`
       ], custom: false, acceptedUploadTypes: 'application/pdf'
     },
-   
+    {
+      name: 'Arbeitsszeugnisse', docs: [
+        `${getbaseUrl()}/assets/ArbeitsZeugnisse_merged.pdf`
+      ], custom: false, acceptedUploadTypes: 'application/pdf'
+    },
+    {
+      name: 'Ausbildungszeugnisse', docs: [
+        `${getbaseUrl()}/assets/Ausbildungszeugnisse_merged.pdf`
+      ], custom: false, acceptedUploadTypes: 'application/pdf'
+    },
+    
     
   ];
   selectedViewer = this.viewers[0];

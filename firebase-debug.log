@@ -1,0 +1,14 @@
+[debug] [2022-01-23T12:11:44.403Z] ----------------------------------------------------------------------
+[debug] [2022-01-23T12:11:44.405Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\delfa\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-01-23T12:11:44.405Z] CLI Version:   10.0.1
+[debug] [2022-01-23T12:11:44.406Z] Platform:      win32
+[debug] [2022-01-23T12:11:44.406Z] Node Version:  v16.13.2
+[debug] [2022-01-23T12:11:44.408Z] Time:          Sun Jan 23 2022 13:11:44 GMT+0100 (Mitteleuropäische Normalzeit)
+[debug] [2022-01-23T12:11:44.409Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-01-23T12:11:44.459Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-01-23T12:11:44.460Z] > authorizing via signed-in user (delfa.anic@gmail.com)
+[debug] [2022-01-23T12:11:44.460Z] [iam] checking project my-online-bewerbung for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2022-01-23T12:11:44.462Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-01-23T12:11:44.463Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
